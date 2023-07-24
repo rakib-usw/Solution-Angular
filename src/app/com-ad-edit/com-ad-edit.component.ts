@@ -29,6 +29,30 @@ export class ComAdEditComponent {
     })
   }
 
+  // Only Numbers with Decimals
+  keyPressNumbersDecimal(event: any) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode != 46 && charCode > 31
+      && (charCode < 48 || charCode > 57)) {
+      event.preventDefault();
+      return false;
+    }
+    return true;
+  }
+
+  // Only AlphaNumeric
+  keyPressAlphaNumeric(event: any) {
+
+    var inp = String.fromCharCode(event.keyCode);
+
+    if (/[a-zA-Z0-9]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
+
   onFormSubmit(){
     if (this.compForm.valid){
       this._compService.adCompany(this.compForm.value);

@@ -6,7 +6,7 @@
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>Company Code</mat-label>
-            <input matInput type=text placeholder="Ex: BS001254" formControlName="company_code">
+            <input matInput type=text placeholder="Ex: BS001254" formControlName="company_code" (keypress)="keyPressAlphaNumeric($event)">
             <mat-icon matPrefix>blur_linear</mat-icon>
             <mat-hint>(a-z/0-9)</mat-hint>
         </mat-form-field>
@@ -21,7 +21,7 @@
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>Share Price</mat-label>
-            <input matInput type = number placeholder="Ex:2.0025" formControlName="share_price">
+            <input matInput type="text" placeholder="Ex:2.0025" formControlName="share_price" (keypress)="keyPressNumbersDecimal($event)" />
             <mat-hint>0-9</mat-hint>
             <mat-icon matPrefix>monetization_on</mat-icon>
         </mat-form-field>
@@ -51,6 +51,8 @@
             <mat-datepicker-toggle matIconPrefix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+       
+        
     </div>
     <div class="row">
         <mat-radio-group aria-label="Select Location" formControlName="location">
@@ -65,5 +67,6 @@
     <button mat-raised-button>Cancel</button>
     <button mat-raised-button color="primary" type="submit">Save</button>
 </div>
+
 </Form>
 
