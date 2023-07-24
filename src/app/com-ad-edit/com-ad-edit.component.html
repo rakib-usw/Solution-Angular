@@ -1,0 +1,69 @@
+<div mat-dialog-title class="title">
+    <h1>Company Information Form</h1>
+</div>
+<Form [formGroup]="compForm" (ngSubmit)="onFormSubmit()">
+<div mat-dialog-content class="content">
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Company Code</mat-label>
+            <input matInput type=text placeholder="Ex: BS001254" formControlName="company_code">
+            <mat-icon matPrefix>blur_linear</mat-icon>
+            <mat-hint>(a-z/0-9)</mat-hint>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Company Name</mat-label>
+            <input matInput type=text placeholder="Ex: InfoSoft PLC" formControlName="company_name">
+            <mat-icon matPrefix>business</mat-icon>
+          </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>Share Price</mat-label>
+            <input matInput type = number placeholder="Ex:2.0025" formControlName="share_price">
+            <mat-hint>0-9</mat-hint>
+            <mat-icon matPrefix>monetization_on</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="company_type">
+              <mat-option *ngFor="let val of comp_category" [value]="val">
+                {{val}}
+              </mat-option>
+            </mat-select>
+            <mat-icon matPrefix>account_balance</mat-icon>
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field appearance="outline">
+            <mat-label>E-Mail</mat-label>
+            <input matInput type=email placeholder="Ex: abd@xyz.com" formControlName="email">
+            <mat-icon matPrefix>alternate_email</mat-icon>
+        </mat-form-field>
+          
+        <mat-form-field appearance="outline">
+            <mat-label>Create Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="create_date">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconPrefix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-radio-group aria-label="Select Location" formControlName="location">
+            <mat-label>Location</mat-label>
+            <mat-radio-button value="1">Inside UK</mat-radio-button>
+            <mat-radio-button value="2">Outside UK</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+
+<div mat-dialog-actions class="action">
+    <button mat-raised-button>Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+</div>
+</Form>
+
